@@ -26,8 +26,6 @@ exports.read = (req, res) => {
 };
 exports.listproducts = (req, res) => {
     Product.find({userId: req.profile._id} )
-        .populate('user', '_id name address')
-        .sort('-created')
         .exec((err, products) => {
             if (err) {
                 return res.status(400).json({
